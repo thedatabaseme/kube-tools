@@ -1,0 +1,1 @@
+docker run -it -v ${PWD}:/work -v $home/.kube:/root/.kube -v /var/run/docker.sock:/var/run/docker.sock --network=host --rm --workdir /work stackit-kube-tools:latest
