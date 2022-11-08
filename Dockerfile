@@ -29,7 +29,9 @@ RUN curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v
     chmod +x /usr/local/bin/kubens
 
 # Install kustomize
-RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.7/kustomize_v4.5.7_linux_amd64.tar.gz  | tar xz && \
+    mv kustomize /usr/local/bin/ && \
+    chmod +x /usr/local/bin/kustomize
 
 # Install Helm
 RUN curl -L https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz | tar xz && \
