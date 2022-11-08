@@ -2,7 +2,7 @@ FROM python:3.11-bullseye
 
 # Install basic tools available in apt repo
 RUN apt update && \
-    apt install -y git git-crypt ca-certificates curl gnupg lsb-release
+    apt install -y git git-crypt ca-certificates curl gnupg lsb-release direnv
 
 # Install gomplate
 RUN curl -o /usr/local/bin/gomplate \
@@ -27,6 +27,9 @@ RUN curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v
     mv kubens /usr/local/bin/ && \
     chmod +x /usr/local/bin/kubectx && \
     chmod +x /usr/local/bin/kubens
+
+# Install kustomize
+RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 # Install Helm
 RUN curl -L https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz | tar xz && \
