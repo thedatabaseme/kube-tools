@@ -40,7 +40,7 @@ to `localhost` by default.
 
 ### Linux
 
-To run `kube-tools` ono your Linux / WSL, run the following command. You probably want to
+To run `kube-tools` onto your Linux / WSL, run the following command. You probably want to
 adjust the volume mounts to your needs / folder structure. The volume mount of 
 `/var/run/docker.sock` is only needed, when you want to run Docker from inside Docker.
 
