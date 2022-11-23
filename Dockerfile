@@ -2,7 +2,7 @@ FROM python:3.11-bullseye
 
 # Install basic tools available in apt repo
 RUN apt update && \
-    apt install -y git git-crypt ca-certificates curl gnupg lsb-release direnv
+    apt install -y git git-crypt ca-certificates curl gnupg lsb-release direnv vim
 
 # Install gomplate
 RUN curl -o /usr/local/bin/gomplate \
