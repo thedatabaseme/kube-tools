@@ -14,6 +14,7 @@ The following tools and packages are included:
 - kind
 - Helm
 - Docker
+- kapp
 - Ansible core
 - Ansible collections: `ansible.posix`, `community.docker`, `community.general`, `kubernetes.core`
 
