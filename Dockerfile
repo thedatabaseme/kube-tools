@@ -39,6 +39,11 @@ RUN curl -L https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz | tar xz && \
     chmod +x /usr/local/bin/helm && \
     rm -rf ./linux-amd64
 
+# Install kapp
+RUN curl -L https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.54.1/kapp-linux-amd64 && \
+    mv ./kapp-linux-amd64 /usr/local/bin/kapp && \
+    chmod +x /usr/local/bin/kapp
+
 # Install Docker
 RUN mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
