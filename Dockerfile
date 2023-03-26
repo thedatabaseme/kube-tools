@@ -15,7 +15,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     chmod +x /usr/local/bin/kubectl
 
 # Install k9s
-RUN curl -L https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_x86_64.tar.gz | tar xz && \
+RUN curl -L https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_amd64.tar.gz | tar xz && \
     mv ./k9s /usr/local/bin && \
     chmod +x /usr/local/bin/k9s && \
     rm ./README.md
