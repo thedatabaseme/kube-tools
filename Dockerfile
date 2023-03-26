@@ -34,9 +34,10 @@ RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kusto
     chmod +x /usr/local/bin/kustomize
 
 # Install kustomize plugin khelm
-RUN mkdir -p $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer && \
-    curl -fsSL https://github.com/mgoltzsche/khelm/releases/latest/download/khelm-linux-amd64 > $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer && \
-    chmod +x $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
+ENV KUSTOMIZE_PLUGIN_HOME=/kustomize/plugin
+RUN mkdir -p /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer && \
+    curl -fsSL https://github.com/mgoltzsche/khelm/releases/latest/download/khelm-linux-amd64 > /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer && \
+    chmod +x /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
 
 # Install Helm
 RUN curl -L https://get.helm.sh/helm-v3.11.2-linux-amd64.tar.gz | tar xz && \
