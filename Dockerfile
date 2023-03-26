@@ -6,7 +6,7 @@ RUN apt update && \
 
 # Install gomplate
 RUN curl -o /usr/local/bin/gomplate \
-    -sSL https://github.com/hairyhenderson/gomplate/releases/download/v3.11.3/gomplate_linux-amd64 && \
+    -sSL https://github.com/hairyhenderson/gomplate/releases/download/v3.11.4/gomplate_linux-amd64 && \
     chmod +x /usr/local/bin/gomplate
 
 # Install kubectl
@@ -15,7 +15,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     chmod +x /usr/local/bin/kubectl
 
 # Install k9s
-RUN curl -L https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xz && \
+RUN curl -L https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_x86_64.tar.gz | tar xz && \
     mv ./k9s /usr/local/bin && \
     chmod +x /usr/local/bin/k9s && \
     rm ./README.md
@@ -29,12 +29,17 @@ RUN curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v
     chmod +x /usr/local/bin/kubens
 
 # Install kustomize
-RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.7/kustomize_v4.5.7_linux_amd64.tar.gz  | tar xz && \
+RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.0.0/kustomize_v5.0.0_linux_amd64.tar.gz  | tar xz && \
     mv kustomize /usr/local/bin/ && \
     chmod +x /usr/local/bin/kustomize
 
+# Install kustomize plugin khelm
+RUN mkdir -p $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer && \
+    curl -fsSL https://github.com/mgoltzsche/khelm/releases/latest/download/khelm-linux-amd64 > $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer && \
+    chmod +x $HOME/.config/kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
+
 # Install Helm
-RUN curl -L https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz | tar xz && \
+RUN curl -L https://get.helm.sh/helm-v3.11.2-linux-amd64.tar.gz | tar xz && \
     mv ./linux-amd64/helm /usr/local/bin/ && \
     chmod +x /usr/local/bin/helm && \
     rm -rf ./linux-amd64
