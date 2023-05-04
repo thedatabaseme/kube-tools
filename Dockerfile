@@ -29,7 +29,7 @@ RUN curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v
     chmod +x /usr/local/bin/kubens
 
 # Install kustomize
-RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.0.0/kustomize_v5.0.0_linux_amd64.tar.gz  | tar xz && \
+RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.0.1/kustomize_v5.0.1_linux_amd64.tar.gz  | tar xz && \
     mv kustomize /usr/local/bin/ && \
     chmod +x /usr/local/bin/kustomize
 
@@ -40,7 +40,7 @@ RUN mkdir -p /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer && \
     chmod +x /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
 
 # Install Helm
-RUN curl -L https://get.helm.sh/helm-v3.11.2-linux-amd64.tar.gz | tar xz && \
+RUN curl -L https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz | tar xz && \
     mv ./linux-amd64/helm /usr/local/bin/ && \
     chmod +x /usr/local/bin/helm && \
     rm -rf ./linux-amd64
@@ -58,7 +58,7 @@ RUN apt update && \
     apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 # Install kind
-RUN curl -Lo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64 && \
+RUN curl -Lo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-linux-amd64 && \
     chmod +x /usr/local/bin/kind
 
 # Install Ansible and some collections
