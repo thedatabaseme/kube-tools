@@ -6,7 +6,7 @@ RUN apt update && \
 
 # Install gomplate
 RUN curl -o /usr/local/bin/gomplate \
-    -sSL https://github.com/hairyhenderson/gomplate/releases/download/v3.11.4/gomplate_linux-amd64 && \
+    -sSL https://github.com/hairyhenderson/gomplate/releases/download/v3.11.5/gomplate_linux-amd64 && \
     chmod +x /usr/local/bin/gomplate
 
 # Install kubectl
@@ -15,7 +15,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     chmod +x /usr/local/bin/kubectl
 
 # Install k9s
-RUN curl -L https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_amd64.tar.gz | tar xz && \
+RUN curl -L https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz | tar xz && \
     mv ./k9s /usr/local/bin && \
     chmod +x /usr/local/bin/k9s && \
     rm ./README.md
@@ -36,17 +36,16 @@ RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kusto
 # Install kustomize plugin khelm
 ENV KUSTOMIZE_PLUGIN_HOME=/kustomize/plugin
 RUN mkdir -p /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer && \
-    curl -fsSL https://github.com/mgoltzsche/khelm/releases/latest/download/khelm-linux-amd64 > /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer && \
-    chmod +x /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
+    curl -fsSL https://github.com/mgoltzsche/khelm/releases/latest/download/khelm-linux-amd64 > /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer && \    chmod +x /kustomize/plugin/khelm.mgoltzsche.github.com/v2/chartrenderer/ChartRenderer
 
 # Install Helm
-RUN curl -L https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz | tar xz && \
+RUN curl -L https://get.helm.sh/helm-v3.12.1-linux-amd64.tar.gz | tar xz && \
     mv ./linux-amd64/helm /usr/local/bin/ && \
     chmod +x /usr/local/bin/helm && \
     rm -rf ./linux-amd64
 
 # Install kapp
-RUN curl -Lo /usr/local/bin/kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.54.1/kapp-linux-amd64 && \
+RUN curl -Lo /usr/local/bin/kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.57.1/kapp-linux-amd64 && \
     chmod +x /usr/local/bin/kapp
 
 # Install Docker
@@ -58,7 +57,7 @@ RUN apt update && \
     apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 # Install kind
-RUN curl -Lo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-linux-amd64 && \
+RUN curl -Lo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64 && \
     chmod +x /usr/local/bin/kind
 
 # Install Ansible and some collections
